@@ -63,3 +63,7 @@ ___
    ```bash
    php artisan migrate --seed
    ``````
+5. Run Application
+   ```bash
+   php artisan serve
+   ``````

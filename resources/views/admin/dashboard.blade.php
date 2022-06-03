@@ -61,10 +61,9 @@
                             <div>
                                 <label>Category</label><br>
                                 <select name="category" value="{{old('category')}}">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                   </select>
                             </div>
                             <div>
@@ -80,11 +79,11 @@
           <aside id="sidebar">
             <div class="dark">
               <h3>Create New Category</h3>
-            <form action="" class="quote" method="POST">
+            <form action="{{ Route('createCategory') }}" class="quote" method="POST">
                 @csrf
                 <div>
                     <label>Category Name</label><br>
-                    <input type="text" placeholder="Name">
+                    <input type="text" placeholder="Name" name="name" value="{{old('name')}}">
                 </div>
                 <button class="button_1" type="submit">Send</button>
             </form>

@@ -25,3 +25,4 @@ Route::get('/signup', [AuthController::class, 'signUpGet'])->name('signUpGet');
 Route::post('/signup/post', [AuthController::class, 'signUpPost'])->name('signUpPost');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
+Route::post('/createCategory', [AdminController::class, 'createCategory'])->name('createCategory');
