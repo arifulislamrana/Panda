@@ -14,7 +14,7 @@
         </div>
         <nav>
           <ul>
-            <li class="current"><a href="#">Home</a></li>
+            <li class="current"><a href="{{ Route('home') }}">Home</a></li>
           </ul>
         </nav>
       </div>
