@@ -26,9 +26,20 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
             <a class="nav-link" href="#shoes">Shoes</a>
             <a class="nav-link" href="#bagpack">Bagpack</a>
-            <a class="nav-link" href="{{ Route('signUpGet') }}" tabindex="-1" aria-disabled="true">Subscribe</a>
           </div>
         </div>
+      </div>
+      <div class="navbar-nav" style="display: flex; float: right">
+        @auth
+        <a class="nav-link" href="{{ Route('logout') }}">Logout</a>
+        <a class="nav-link" href="#" style="height: 15px; width: 15px; background-color:green; border-radius: 50%;"></a>
+        @endauth
+
+        @guest
+        <a class="nav-link" href="{{ Route('signUpGet') }}">Subscribe</a>
+        <a class="nav-link"  href="{{ Route('loginGet') }}">Login</a>
+        @endguest
+
       </div>
     </nav>
     <!-- from bootstrap carosal slider -->
