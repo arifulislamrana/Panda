@@ -26,3 +26,4 @@ Route::post('/signup/post', [AuthController::class, 'signUpPost'])->name('signUp
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
 Route::post('/createCategory', [AdminController::class, 'createCategory'])->name('createCategory');
+Route::post('/createProduct', [AdminController::class, 'createProduct'])->name('createProduct');

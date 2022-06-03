@@ -37,12 +37,12 @@
           <article id="main-col">
                 <div class="dark">
                   <h3>Add New Product</h3>
-                    <form action="" class="quote" style="display: flex; justify-content: space-around;" method="POST">
+                    <form action="{{ Route('createProduct') }}" class="quote" style="display: flex; justify-content: space-around;" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <div>
                                 <label>Product Name</label><br>
-                                <input type="text" placeholder="Name" name="name" value="{{old('name')}}">
+                                <input type="text" placeholder="Name" name="name" value="{{old('name')}}" required>
                             </div>
                             <div>
                                 <label>Title</label><br>
@@ -56,11 +56,11 @@
                         <div>
                             <div>
                                 <label>Price</label><br>
-                                <input type="number" placeholder="Price" name="price" value="{{old('category')}}">
+                                <input type="number" placeholder="Price" name="price" value="{{old('category')}}" required>
                             </div>
                             <div>
                                 <label>Category</label><br>
-                                <select name="category" value="{{old('category')}}">
+                                <select name="category_id" value="{{old('category')}}" required>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
