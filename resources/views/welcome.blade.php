@@ -23,9 +23,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav" style="display: flex">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#shoes">Shoes</a>
-            <a class="nav-link" href="#bagpack">Bagpack</a>
+            @foreach ($categories as $category)
+            <a class="nav-link" href="#{{ $category->name }}">{{ $category->name }}</a>
+            @endforeach
           </div>
         </div>
       </div>
@@ -47,49 +47,36 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row d-flex align-items-center p-5">
-            <div class="col-md-7 ">
-              <h1>X-box for your living room</h1>
-              <p> This is the best x-box in the world for people who just want to waste time in front of fake sport</p>
+            <div class="col-md-7">
+              <h1>{{ $bannerData[0]->title}}</h1>
+              <p> {{ $bannerData[0]->description}}</p>
                 <H3>
-                  $600
+                  ${{$bannerData[0]->price}}
                 </H3>
                 <button class="btn btn-warning">BUY NOW</button>
             </div>
             <div class="col-md-5">
-              <img src="/Assets/images/banner-images/xbox.png" class="d-block w-100" alt="...">
+              <img src="{{$bannerData[0]->image}}" class="d-block w-100" alt="...">
             </div>
           </div>
         </div>
+        @for ($i = 1; $i < count($bannerData); $i++)
         <div class="carousel-item">
           <div class="row d-flex align-items-center p-5">
             <div class="col-md-7">
-              <h1>X-box for your living room</h1>
-              <p> This is the best x-box in the world for people who just want to waste time in front of fake sport</p>
+              <h1>{{ $bannerData[$i]->title}}</h1>
+              <p> {{ $bannerData[$i]->description}}</p>
                 <H3>
-                  $600
+                  ${{$bannerData[$i]->price}}
                 </H3>
                 <button class="btn btn-warning">BUY NOW</button>
             </div>
             <div class="col-md-5">
-              <img src="/Assets/images/banner-images/tv.png" class="d-block w-100" alt="...">
+              <img src="{{$bannerData[$i]->image}}" class="d-block w-100" alt="...">
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="row d-flex align-items-center p-5">
-            <div class="col-md-7">
-              <h1>X-box for your living room</h1>
-              <p> This is the best x-box in the world for people who just want to waste time in front of fake sport</p>
-                <H3>
-                  $600
-                </H3>
-                <button class="btn btn-warning">BUY NOW</button>
-            </div>
-            <div class="col-md-5">
-              <img src="/Assets/images/banner-images/headphone.png" class="d-block w-100" alt="...">
-            </div>
-          </div>
-        </div>
+        @endfor
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,24 +92,16 @@
   <main class="container">
     <section class="container overflow-hidden mt-5 catagories">
       <div class="row g-5 text-white">
+        @foreach ($allcategories as $category)
         <div class="col">
+          <a href="#{{ $category->name }}" style="text-decoration: none; color:whitesmoke">
           <div class="p-3 rounded bg-success d-flex justify-content-around align-items-center">
-            <h1>Watch</h1>
-            <img src="/Assets/images/categories/watch.png" alt="">
+            <img src="/Assets/images/test.png" alt="">
+            <h1>{{ $category->name }}</h1>
           </div>
+        </a>
         </div>
-        <div class="col">
-          <div class="p-3 rounded bg-warning d-flex justify-content-around align-items-center">
-            <h1>Bag</h1>
-            <img src="/Assets/images/categories/bag.png" alt="">
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3 rounded bg-primary d-flex justify-content-around align-items-center">
-            <h1>Shoes</h1>
-            <img src="/Assets/images/categories/shoes.png" alt="">
-          </div>
-        </div>
+        @endforeach
 
       </div>
     </section>
@@ -218,6 +197,29 @@
       </div>
     </section>
     <!--footer section-->
+
+    @foreach ($categoriesForProduct as $category)
+    <section class="mt-5">
+      <h3 id="{{ $category->name }}">{{ $category->name }}</h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach ($category->products as $product)
+        <div class="col">
+          <div class="panda-card card h-100 shadow">
+            <img src="{{ $product->image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ $product->name }}</h5>
+              <h5>${{ $product->price }}</h5>
+              <p class="card-text">{{ $product->description }}</p>
+            </div>
+            <div class="card-footer panda-card-footer">
+              <button class="btn btn-warning">Buy Now</button>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </section>
+    @endforeach
   </main>
   <footer id="subscriber" class="text-center mt-3 p-3">
 

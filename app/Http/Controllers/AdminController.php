@@ -12,7 +12,9 @@ class AdminController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.dashboard', ['categories' => $categories]);
+        return view('admin.dashboard', [
+            'categories' => $categories
+        ]);
     }
 
     public function createCategory(Request $request)
@@ -41,6 +43,7 @@ class AdminController extends Controller
              ]);
 
         $imageName = time().rand(99, 100000000).'.'.$image->extension();
+        $folderPath = 'Uploads';
         $imagePath = "/Uploads/".$imageName;
 
         Product::create([
@@ -51,7 +54,7 @@ class AdminController extends Controller
             'image' => $imagePath,
             'category_id' => $validatedData['category_id'],
         ]);
-        $image->move(public_path($imagePath), $imageName);
+        $image->move(public_path($folderPath), $imageName);
 
         return redirect()->route('adminDashboard');
     }
