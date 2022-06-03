@@ -29,7 +29,7 @@
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password" required>
             <input type="submit" name="submit" value="Login">
-            <a href="{{ Route(;signUpGet) }}">Sign up</a>
+            <a href="{{ Route('signUpGet') }}">Sign up</a>
         </form>
 	</div>
 </body>

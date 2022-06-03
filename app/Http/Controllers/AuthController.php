@@ -28,17 +28,17 @@ class AuthController extends Controller
         'password.required' => 'Password is required'
          ]);
 
+         if ($validatedData['password'] != $validatedData['cpassword'])
+         {
+             return redirect()->back()
+             ->withErrors(['invalid' => 'Password and Confirm password should be same'])
+             ->withInput($request->only('email'));
+
+         }
+
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         $doesExist = User::where('email', $validatedData['email'])->get();
-
-        if ($validatedData['password'] != $validatedData['cpassword'])
-        {
-            return redirect()->back()
-        	->withErrors(['invalid' => 'Password and Confirm password should be same'])
-        	->withInput($request->only('email'));
-
-        }
 
         if (count($doesExist) > 0)
         {
