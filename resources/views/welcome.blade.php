@@ -54,7 +54,7 @@
                   ${{$bannerData[0]->price}}
                 </H3>
                 @auth
-                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="#">BUY NOW</a></button>
                 @endauth
                 @guest
                 <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
@@ -75,7 +75,7 @@
                   ${{$bannerData[$i]->price}}
                 </H3>
                 @auth
-                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="#">BUY NOW</a></button>
                 @endauth
                 @guest
                 <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
@@ -131,7 +131,7 @@
             </div>
             <div class="card-footer panda-card-footer">
               @auth
-                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="#">BUY NOW</a></button>
                 @endauth
                 @guest
                 <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
