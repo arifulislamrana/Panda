@@ -31,7 +31,7 @@
             <p>Confirm Password</p>
             <input type="password" name="cpassword" placeholder="Enter Password" required>
             <input type="submit" name="submit" value="Sign up">
-            <a href="">Login</a>
+            <a href="{{ Route('loginGet') }}">Login</a>
         </form>
 	</div>
 </body>

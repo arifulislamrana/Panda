@@ -36,7 +36,7 @@ class AuthController extends Controller
         {
             return redirect()->back()
         	->withErrors(['invalid' => 'Password and Confirm password should be same'])
-        	->withInput($request->only('email', 'remember'));
+        	->withInput($request->only('email'));
 
         }
 
@@ -44,7 +44,7 @@ class AuthController extends Controller
         {
             return redirect()->back()
         	->withErrors(['invalid' => 'The email is already exist.'])
-        	->withInput($request->only('email', 'remember'));
+        	->withInput($request->only('email'));
 
         }
         $user = User::create($validatedData);
@@ -57,6 +57,22 @@ class AuthController extends Controller
     public function loginGet()
     {
         return view('login');
+    }
+
+    public function loginPost(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->route('home');
+        }
+
+        return redirect()->back()
+        	->withErrors(['invalid' => 'Invalid Email or Password.'])
+        	->withInput($request->only('email'));
+
     }
 
     public function logout(Request $request)
