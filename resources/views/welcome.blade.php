@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Panda</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="/Assets/css/style.css" >
@@ -53,7 +53,12 @@
                 <H3>
                   ${{$bannerData[0]->price}}
                 </H3>
-                <button class="btn btn-warning">BUY NOW</button>
+                @auth
+                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                @endauth
+                @guest
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
+                @endguest
             </div>
             <div class="col-md-5">
               <img src="{{$bannerData[0]->image}}" class="d-block w-100" alt="...">
@@ -69,7 +74,12 @@
                 <H3>
                   ${{$bannerData[$i]->price}}
                 </H3>
-                <button class="btn btn-warning">BUY NOW</button>
+                @auth
+                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                @endauth
+                @guest
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
+                @endguest
             </div>
             <div class="col-md-5">
               <img src="{{$bannerData[$i]->image}}" class="d-block w-100" alt="...">
@@ -105,98 +115,6 @@
 
       </div>
     </section>
-    <!-- cards section -->
-    <section class="mt-5">
-      <h3 id="shoes">Shoes</h3>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/shoes/shoe-1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Supply 350</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/shoes/shoe-2.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nike 360</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/shoes/shoe-3.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Red Airmax</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--bag pac section -->
-    <section class="mt-5">
-      <h3 id="bagpeck">Bagpeck</h3>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/bags/bag-1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Red lalto bag</h5>
-              <h5>$350</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/bags/bag-2.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">blue bolto bag</h5>
-              <h5>$360</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="panda-card card h-100 shadow">
-            <img src="/Assets/images/bags/bag-3.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">black kallo bag</h5>
-              <h5>$360</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--footer section-->
 
     @foreach ($categoriesForProduct as $category)
     <section class="mt-5">
@@ -212,7 +130,12 @@
               <p class="card-text">{{ $product->description }}</p>
             </div>
             <div class="card-footer panda-card-footer">
-              <button class="btn btn-warning">Buy Now</button>
+              @auth
+                <button class="btn btn-warning"><a href="#">BUY NOW</a></button>
+                @endauth
+                @guest
+                <button class="btn btn-warning"><a style="text-decoration: none; color: white;" href="{{ Route('loginGet') }}">BUY NOW</a></button>
+                @endguest
             </div>
           </div>
         </div>
@@ -221,6 +144,8 @@
     </section>
     @endforeach
   </main>
+  <!--footer section-->
+
   <footer id="subscriber" class="text-center mt-3 p-3">
 
   </footer>

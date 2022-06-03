@@ -20,7 +20,7 @@
             </ul>
             </div>
         @endif
-        <img src="/Assets/images/logo.png" class="avatar">
+        <img src="/Assets/images/logo.jpg" class="avatar">
         <h1>Login Here</h1>
         <form action="{{ Route('signUpPost') }}" method="POST">
             @csrf
